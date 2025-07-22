@@ -1,0 +1,80 @@
+{
+	"name": "expense-tracker-rn",
+	"main": "expo-router/entry",
+	"version": "0.1.0",
+	"private": true,
+	"engines": {
+		"node": ">=18.0.0",
+		"npm": ">=10.0.0"
+	},
+	"description": "",
+	"keywords": [],
+	"license": "ISC",
+	"author": "Mohamed Ashraf Othman - mohamedashrafothman@gmail.com",
+	"scripts": {
+		"start": "expo start",
+		"android": "expo start --android",
+		"ios": "expo start --ios",
+		"web": "expo start --web",
+		"test": "jest --watchAll",
+		"prepare": "husky install",
+		"prettify": "prettier --write --ignore-path .gitignore",
+		"get-next-release-version": "node ./get-next-release-version.js",
+		"release": "standard-version",
+		"release:minor": "standard-version --release-as minor",
+		"release:patch": "standard-version --release-as patch",
+		"release:major": "standard-version --release-as major"
+	},
+	"jest": {
+		"preset": "jest-expo"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mohamedashrafothman/expense-tracker-rn.git"
+	},
+	"bugs": {
+		"url": "https://github.com/mohamedashrafothman/expense-tracker-rn/issues"
+	},
+	"homepage": "https://github.com/mohamedashrafothman/expense-tracker-rn#readme",
+	"dependencies": {
+		"@expo/vector-icons": "^14.1.0",
+		"@react-navigation/native": "^7.1.6",
+		"expo": "53.0.20",
+		"expo-font": "13.3.2",
+		"expo-linking": "7.1.7",
+		"expo-router": "5.1.4",
+		"expo-splash-screen": "0.30.10",
+		"expo-status-bar": "2.2.3",
+		"expo-system-ui": "5.0.10",
+		"expo-web-browser": "14.2.0",
+		"phosphor-react-native": "^3.0.0",
+		"react": "19.0.0",
+		"react-dom": "19.0.0",
+		"react-native": "0.79.5",
+		"react-native-reanimated": "3.17.4",
+		"react-native-safe-area-context": "5.4.0",
+		"react-native-screens": "4.11.1",
+		"react-native-web": "0.20.0"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.25.2",
+		"@commitlint/cli": "19.6.0",
+		"@commitlint/config-conventional": "19.6.0",
+		"@types/react": "19.0.10",
+		"conventional-recommended-bump": "10.0.0",
+		"husky": "8.0.1",
+		"jest-expo": "53.0.9",
+		"jest": "^29.2.1",
+		"lint-staged": "15.2.11",
+		"prettier": "3.4.2",
+		"react-test-renderer": "19.0.0",
+		"semver": "7.6.3",
+		"standard-version": "9.5.0",
+		"typescript": "5.8.3"
+	},
+	"standard-version": {
+		"skip": {
+			"tag": true
+		}
+	}
+}
