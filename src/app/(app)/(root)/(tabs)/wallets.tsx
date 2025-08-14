@@ -1,45 +1,77 @@
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
+import WalletListItem from "@/components/WalletListItem";
 import { colors, radius, spacingY } from "@/constants/theme";
+import IWallet from "@/interfaces/wallet.interface";
 import { verticalScale } from "@/utils/styling";
 import { Link } from "expo-router";
 import * as Icons from "phosphor-react-native";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
-const Wallets = () => (
-	<ScreenWrapper style={{ backgroundColor: colors.black }}>
-		<View style={styles.container}>
-			{/* Ballance View */}
-			<View style={styles.ballanceView}>
-				<View style={{ alignItems: "center" }}>
-					<Typo size={45} fontWeight="500">
-						{`$${Number(2390).toFixed(2)}`}
-					</Typo>
-					<Typo size={16} color={colors.neutral300}>
-						Total Ballance
-					</Typo>
+const Wallets = () => {
+	const wallets: IWallet[] = [
+		{ id: "1", name: "Savings", image: require("@/assets/images/icon.png") },
+		{ id: "2", name: "Deposit", image: require("@/assets/images/icon.png") },
+		{ id: "3", name: "Loan", image: require("@/assets/images/icon.png") },
+	];
+
+	return (
+		<ScreenWrapper style={{ backgroundColor: colors.black }}>
+			<View style={styles.container}>
+				{/* Ballance View */}
+				<View style={styles.ballanceView}>
+					<View style={{ alignItems: "center" }}>
+						<Typo size={45} fontWeight="500">
+							{`$${Number(2390).toFixed(2)}`}
+						</Typo>
+						<Typo size={16} color={colors.neutral300}>
+							Total Ballance
+						</Typo>
+					</View>
+				</View>
+
+				{/* Wallets View */}
+				<View style={styles.wallets}>
+					{/* Wallets Header View */}
+					<View style={styles.flexRow}>
+						<Typo size={20} fontWeight="500">
+							My Wallets
+						</Typo>
+						<Link href="/(app)/(root)/(modal)/wallet" asChild>
+							<TouchableOpacity>
+								<Icons.PlusCircle
+									weight="fill"
+									color={colors.primary}
+									size={verticalScale(33)}
+								/>
+							</TouchableOpacity>
+						</Link>
+					</View>
+
+					{/* Loading View */}
+					{/* <Loading /> */}
+
+					{/* Wallets List View */}
+					<FlatList
+						data={wallets}
+						renderItem={({ item, index }) => (
+							<Animated.View
+								entering={FadeInDown.delay(index * 200)
+									.springify()
+									.damping(13)}>
+								<WalletListItem item={item} />
+							</Animated.View>
+						)}
+						contentContainerStyle={styles.listStyle}
+					/>
 				</View>
 			</View>
-			{/* Wallets */}
-			<View style={styles.wallets}>
-				<View style={styles.flexRow}>
-					<Typo size={20} fontWeight="500">
-						My Wallets
-					</Typo>
-					<Link href="/(app)/(root)/(modal)/wallet" asChild>
-						<TouchableOpacity>
-							<Icons.PlusCircle
-								weight="fill"
-								color={colors.primary}
-								size={verticalScale(33)}
-							/>
-						</TouchableOpacity>
-					</Link>
-				</View>
-			</View>
-		</View>
-	</ScreenWrapper>
-);
+		</ScreenWrapper>
+	);
+};
+
+export default Wallets;
 
 const styles = StyleSheet.create({
 	container: {
@@ -68,5 +100,3 @@ const styles = StyleSheet.create({
 	},
 	listStyle: { paddingVertical: spacingY._20, paddingTop: spacingY._20 },
 });
-
-export default Wallets;

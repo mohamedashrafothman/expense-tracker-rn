@@ -80,6 +80,8 @@ const Register = () => (
 	</ScreenWrapper>
 );
 
+export default Register;
+
 const styles = StyleSheet.create({
 	container: { flex: 1, gap: spacingY._30, paddingHorizontal: spacingX._20 },
 	form: { gap: spacingY._20 },
@@ -87,5 +89,3 @@ const styles = StyleSheet.create({
 	footer: { flexDirection: "row", alignItems: "center", justifyContent: "center", gap: 5 },
 	footerText: { textAlign: "center", color: colors.text, fontSize: verticalScale(15) },
 });
-
-export default Register;

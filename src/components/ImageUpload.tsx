@@ -70,6 +70,8 @@ const ImageUpload = ({
 	);
 };
 
+export default ImageUpload;
+
 const styles = StyleSheet.create({
 	inputContainer: {
 		height: verticalScale(54),
@@ -100,5 +102,3 @@ const styles = StyleSheet.create({
 		shadowRadius: 10,
 	},
 });
-
-export default ImageUpload;

@@ -56,6 +56,8 @@ const Index = () => (
 	</ScreenWrapper>
 );
 
+export default Index;
+
 const styles = StyleSheet.create({
 	container: { flex: 1, justifyContent: "space-between", paddingTop: spacingY._7 },
 	loginButton: { alignSelf: "flex-end", marginRight: spacingX._20 },
@@ -78,5 +80,3 @@ const styles = StyleSheet.create({
 	},
 	buttonContainer: { width: "100%", paddingHorizontal: spacingX._25 },
 });
-
-export default Index;

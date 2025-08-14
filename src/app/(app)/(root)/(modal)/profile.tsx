@@ -75,10 +75,7 @@ const Profile = () => {
 				</ScrollView>
 			</View>
 			<View style={style.footer}>
-				<Button
-					style={{ width: "100%" }}
-					onPress={() => console.log("updated")}
-					loading={false}>
+				<Button style={{ flex: 1 }} onPress={() => console.log("updated")} loading={false}>
 					<Typo color={colors.neutral900} fontWeight={"600"}>
 						Update
 					</Typo>
@@ -119,7 +116,7 @@ const style = StyleSheet.create({
 	footer: {
 		alignItems: "center",
 		justifyContent: "center",
-		flexDirection: "column",
+		flexDirection: "row",
 		paddingHorizontal: spacingX._20,
 		gap: verticalScale(20),
 		paddingTop: spacingY._20,

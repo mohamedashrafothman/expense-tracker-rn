@@ -8,18 +8,43 @@ import Typo from "@/components/Typo";
 import { colors, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
 import { type ImagePickerSuccessResult } from "expo-image-picker";
+import { useLocalSearchParams } from "expo-router";
+import * as Icons from "phosphor-react-native";
 import { useState } from "react";
-import { ScrollView, StyleSheet, View } from "react-native";
+import { Alert, ScrollView, StyleSheet, View } from "react-native";
 
 const Wallet = () => {
+	// route Hooks
+	const { id = undefined }: { id?: string | undefined } = useLocalSearchParams();
+
+	// state hooks
 	const [walletIconState, setWalletIconState] = useState<
 		ImagePickerSuccessResult["assets"][0] | null
 	>(null);
 
+	// event handler
+	const onDeleteWallet = () =>
+		Alert.alert(
+			"Confirm",
+			"Are you sure you want to delete this wallet? this action can't be undone.",
+			[
+				{ text: "No, Cancel", style: "cancel" },
+				{
+					text: "Yes, Delete",
+					onPress: () => console.log("Deleted"),
+					style: "destructive",
+				},
+			]
+		);
+
 	return (
 		<ScreenWrapper isModal>
 			<View style={style.container}>
-				<Header title="New Wallet" leftIcon={<BackButton />} style={style.header} />
+				<Header
+					title={id ? "Update Wallet" : "New Wallet"}
+					leftIcon={<BackButton />}
+					style={style.header}
+				/>
 				<ScrollView contentContainerStyle={style.content}>
 					<View style={style.inputContainer}>
 						<Typo style={{ color: colors.neutral200, marginTop: spacingY._10 }}>
@@ -47,12 +72,24 @@ const Wallet = () => {
 				</ScrollView>
 			</View>
 			<View style={style.footer}>
+				{id && (
+					<Button
+						style={{
+							paddingHorizontal: spacingX._15,
+							flexShrink: 0,
+							backgroundColor: colors.rose,
+						}}
+						onPress={() => onDeleteWallet()}
+						loading={false}>
+						<Icons.Trash size={verticalScale(24)} weight="bold" color={colors.white} />
+					</Button>
+				)}
 				<Button
-					style={{ width: "100%" }}
+					style={{ paddingHorizontal: spacingX._15, flexGrow: 1 }}
 					onPress={() => console.log("Created")}
 					loading={false}>
 					<Typo color={colors.neutral900} fontWeight={"600"}>
-						Add Wallet
+						{id ? "Update Wallet" : "Add New Wallet"}
 					</Typo>
 				</Button>
 			</View>
@@ -68,7 +105,7 @@ const style = StyleSheet.create({
 	footer: {
 		alignItems: "center",
 		justifyContent: "center",
-		flexDirection: "column",
+		flexDirection: "row",
 		paddingHorizontal: spacingX._20,
 		gap: verticalScale(20),
 		paddingTop: spacingY._20,

@@ -88,14 +88,3 @@ export type ResponseType = {
 	data?: any;
 	msg?: string;
 };
-
-export type WalletType = {
-	id?: string;
-	name: string;
-	amount?: number;
-	totalIncome?: number;
-	totalExpenses?: number;
-	image: any;
-	uid?: string;
-	created?: Date;
-};
