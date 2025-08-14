@@ -1,3 +1,5 @@
+import { type ImagePickerSuccessResult } from "expo-image-picker";
+
 export const getLast7Days = () => {
 	const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 	const result = [];
@@ -66,4 +68,19 @@ export const getYearsRange = (startYear: number, endYear: number): any => {
 	}
 	// return result;
 	return result.reverse();
+};
+
+export const getProfileImage = (
+	file?: string | ImagePickerSuccessResult["assets"][0] | undefined | null
+) => {
+	if (file && typeof file === "object" && file.uri) return file.uri;
+	if (file && typeof file === "string") return file;
+	return require("../assets/images/defaultAvatar.png");
+};
+export const getFilePath = (
+	file?: string | ImagePickerSuccessResult["assets"][0] | undefined | null
+) => {
+	if (file && typeof file === "object" && file.uri) return file.uri;
+	if (file && typeof file === "string") return file;
+	return null;
 };
