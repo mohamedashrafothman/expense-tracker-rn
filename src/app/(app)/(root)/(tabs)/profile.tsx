@@ -119,6 +119,8 @@ const Profile = () => {
 	);
 };
 
+export default Profile;
+
 const style = StyleSheet.create({
 	container: { flex: 1, paddingHorizontal: spacingX._20 },
 	header: { paddingTop: spacingY._10 },
@@ -151,5 +153,3 @@ const style = StyleSheet.create({
 		borderCurve: "continuous",
 	},
 });
-
-export default Profile;

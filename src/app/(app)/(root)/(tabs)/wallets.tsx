@@ -2,7 +2,7 @@ import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
 import WalletListItem from "@/components/WalletListItem";
 import { colors, radius, spacingY } from "@/constants/theme";
-import IWallet from "@/interfaces/wallet.interface";
+import IWallet from "@/interfaces/Wallet.interface";
 import { verticalScale } from "@/utils/styling";
 import { Link } from "expo-router";
 import * as Icons from "phosphor-react-native";
