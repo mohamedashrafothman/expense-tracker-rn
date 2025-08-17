@@ -6,12 +6,11 @@ import { StyleSheet, TouchableOpacity, TouchableOpacityProps, View, ViewStyle } 
 
 type Props = {
 	style?: ViewStyle | undefined;
-	onPress?: () => void | undefined;
 	loading?: boolean | undefined;
 	children: React.ReactNode;
 } & TouchableOpacityProps;
 
-const Button = ({ style, onPress, loading, children, disabled, ...rest }: Props) => {
+const Button = ({ style, loading, children, disabled, ...rest }: Props) => {
 	if (loading)
 		return (
 			<View style={[styles.button, styles.disabled, style]}>
@@ -22,7 +21,6 @@ const Button = ({ style, onPress, loading, children, disabled, ...rest }: Props)
 	return (
 		<TouchableOpacity
 			style={[styles.button, style, disabled && styles.disabled]}
-			onPress={onPress}
 			disabled={disabled}
 			{...rest}>
 			{children}

@@ -1,9 +1,11 @@
+import Button from "@/components/Button";
 import HomeCard from "@/components/HomeCard";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import TransactionList from "@/components/TransactionList";
 import Typo from "@/components/Typo";
 import { colors, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
+import { Link } from "expo-router";
 import * as Icons from "phosphor-react-native";
 import { ScrollView, StyleSheet, TouchableOpacity, View } from "react-native";
 
@@ -28,16 +30,19 @@ const Index = () => (
 					/>
 				</TouchableOpacity>
 			</View>
+
 			{/* Totals card */}
 			<ScrollView
 				contentContainerStyle={styles.scrollViewContainer}
 				showsVerticalScrollIndicator={false}>
-				<View>
-					<HomeCard />
-				</View>
+				{/* Ballance Card */}
+				<HomeCard />
+
+				{/* Transaction List */}
 				<TransactionList
 					data={[
 						{
+							id: "1",
 							type: "expense",
 							description: "lorem ipsum",
 							category: {
@@ -51,6 +56,7 @@ const Index = () => (
 							walletId: "1",
 						},
 						{
+							id: "2",
 							type: "income",
 							description: "lorem ipsum",
 							category: {
@@ -64,6 +70,91 @@ const Index = () => (
 							walletId: "1",
 						},
 						{
+							id: "3",
+							type: "expense",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 100,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "4",
+							type: "expense",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 100,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "5",
+							type: "income",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 500,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "6",
+							type: "expense",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 100,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "7",
+							type: "expense",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 100,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "8",
+							type: "income",
+							description: "lorem ipsum",
+							category: {
+								label: "wallet",
+								value: "50",
+								icon: Icons.Wallet,
+								bgColor: colors.green,
+							},
+							amount: 500,
+							date: new Date(),
+							walletId: "1",
+						},
+						{
+							id: "9",
 							type: "expense",
 							description: "lorem ipsum",
 							category: {
@@ -81,6 +172,13 @@ const Index = () => (
 					title="Recent Transactions"
 				/>
 			</ScrollView>
+
+			{/* Floating Button */}
+			<Link href="/(app)/(root)/(modal)/transaction" asChild>
+				<Button style={styles.floatingButton}>
+					<Icons.Plus color={colors.black} weight="bold" size={verticalScale(24)} />
+				</Button>
+			</Link>
 		</View>
 	</ScreenWrapper>
 );
@@ -103,5 +201,13 @@ const styles = StyleSheet.create({
 	scrollViewContainer: {
 		marginTop: spacingY._10,
 		gap: spacingY._20,
+	},
+	floatingButton: {
+		height: verticalScale(40),
+		width: verticalScale(40),
+		borderRadius: 100,
+		position: "absolute",
+		bottom: verticalScale(20),
+		right: verticalScale(20),
 	},
 });

@@ -1,6 +1,6 @@
 import Typo from "@/components/Typo";
 import { colors, radius, spacingX } from "@/constants/theme";
-import IWallet from "@/interfaces/wallet.interface";
+import IWallet from "@/interfaces/Wallet.interface";
 import { verticalScale } from "@/utils/styling";
 import { Image } from "expo-image";
 import { Link, Router } from "expo-router";

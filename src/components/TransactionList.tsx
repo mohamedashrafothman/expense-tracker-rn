@@ -1,5 +1,5 @@
 import Loading from "@/components/Loading";
-import TransactionItem from "@/components/TransactionItem";
+import TransactionListItem from "@/components/TransactionListItem";
 import Typo from "@/components/Typo";
 import { colors, spacingY } from "@/constants/theme";
 import ITransaction from "@/interfaces/Transaction.interface";
@@ -36,7 +36,7 @@ const TransactionList = ({ data = [], title, loading, emptyListMessage }: Props)
 							entering={FadeInDown.delay(index * 70)
 								.springify()
 								.damping(14)}>
-							<TransactionItem item={item} handleClick={() => {}} />
+							<TransactionListItem item={item} />
 						</Animated.View>
 					)}
 					estimatedItemSize={200}

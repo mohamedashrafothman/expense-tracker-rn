@@ -13,6 +13,7 @@ const RootLayout = () => {
 			<Stack.Screen name="(modal)/profile" options={{ presentation: "modal" }} />
 			<Stack.Screen name="(modal)/settings" options={{ presentation: "modal" }} />
 			<Stack.Screen name="(modal)/wallet" options={{ presentation: "modal" }} />
+			<Stack.Screen name="(modal)/transaction" options={{ presentation: "modal" }} />
 		</Stack>
 	);
 };

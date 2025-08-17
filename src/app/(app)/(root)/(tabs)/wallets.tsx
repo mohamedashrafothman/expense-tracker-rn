@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import ScreenWrapper from "@/components/ScreenWrapper";
 import Typo from "@/components/Typo";
 import WalletListItem from "@/components/WalletListItem";
@@ -6,7 +7,7 @@ import IWallet from "@/interfaces/Wallet.interface";
 import { verticalScale } from "@/utils/styling";
 import { Link } from "expo-router";
 import * as Icons from "phosphor-react-native";
-import { FlatList, StyleSheet, TouchableOpacity, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 const Wallets = () => {
@@ -39,13 +40,13 @@ const Wallets = () => {
 							My Wallets
 						</Typo>
 						<Link href="/(app)/(root)/(modal)/wallet" asChild>
-							<TouchableOpacity>
-								<Icons.PlusCircle
-									weight="fill"
-									color={colors.primary}
-									size={verticalScale(33)}
+							<Button style={styles.addButton}>
+								<Icons.Plus
+									weight="bold"
+									color={colors.black}
+									size={verticalScale(20)}
 								/>
-							</TouchableOpacity>
+							</Button>
 						</Link>
 					</View>
 
@@ -83,6 +84,12 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.black,
 		justifyContent: "center",
 		alignItems: "center",
+	},
+	addButton: {
+		height: verticalScale(30),
+		width: verticalScale(30),
+		borderRadius: 100,
+		padding: 0,
 	},
 	wallets: {
 		flex: 1,
