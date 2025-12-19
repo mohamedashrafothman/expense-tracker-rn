@@ -1,10 +1,10 @@
 import BackButton from "@/components/BackButton";
 import Button from "@/components/Button";
 import Header from "@/components/Header";
-import Input from "@/components/Input";
 import ScreenWrapper from "@/components/ScreenWrapper";
+import Select from "@/components/Select";
 import Typo from "@/components/Typo";
-import { colors, spacingX, spacingY } from "@/constants/theme";
+import { colors, radius, spacingX, spacingY } from "@/constants/theme";
 import { verticalScale } from "@/utils/styling";
 import { useLocalSearchParams } from "expo-router";
 import * as Icons from "phosphor-react-native";
@@ -31,29 +31,72 @@ const Transaction = () => {
 
 	return (
 		<ScreenWrapper isModal>
-			<View style={style.container}>
+			<View style={styles.container}>
 				<Header
 					title={id ? "Update Transaction" : "New Transaction"}
 					leftIcon={<BackButton />}
-					style={style.header}
+					style={styles.header}
 				/>
 				<ScrollView
-					contentContainerStyle={style.content}
+					contentContainerStyle={styles.form}
 					showsVerticalScrollIndicator={false}>
-					<View style={style.inputContainer}>
-						<Typo style={{ color: colors.neutral200, marginTop: spacingY._10 }}>
-							Type
+					{/* Transaction Type */}
+					<View style={styles.inputContainer}>
+						<Typo color={colors.text} size={16}>
+							Transaction Type
 						</Typo>
-						<Input
-							value="Transaction type"
-							placeholder="Enter transaction type"
-							autoCapitalize="none"
-							returnKeyType="next"
+						<Select
+							placeholder="Select Transaction Type..."
+							data={[
+								{ label: "Expense", value: "expense" },
+								{ label: "Income", value: "income" },
+							]}
+							labelField="label"
+							valueField="value"
+							value="expense"
+							onChange={(item) => console.log(item)}
+						/>
+					</View>
+
+					{/* Wallet */}
+					<View style={styles.inputContainer}>
+						<Typo color={colors.text} size={16}>
+							Wallet
+						</Typo>
+						<Select
+							placeholder="Select Wallet..."
+							data={[
+								{ label: "Wallet Name 1 ($12,000)", value: "wallet-1" },
+								{ label: "Wallet Name 2 ($10,000)", value: "wallet-2" },
+							]}
+							labelField="label"
+							valueField="value"
+							value="wallet 1"
+							onChange={(item) => console.log(item)}
+						/>
+					</View>
+
+					{/* Expense Categories */}
+					{/* TODO: make it visible only when transaction type is expense */}
+					<View style={styles.inputContainer}>
+						<Typo color={colors.text} size={16}>
+							Expense Categories
+						</Typo>
+						<Select
+							placeholder="Select Categories..."
+							data={[
+								{ label: "Category name 1", value: "category-1" },
+								{ label: "Category name 2", value: "category-2" },
+							]}
+							labelField="label"
+							valueField="value"
+							value="category-1"
+							onChange={(item) => console.log(item)}
 						/>
 					</View>
 				</ScrollView>
 			</View>
-			<View style={style.footer}>
+			<View style={styles.footer}>
 				{id && (
 					<Button
 						style={{
@@ -79,22 +122,34 @@ const Transaction = () => {
 	);
 };
 
-const style = StyleSheet.create({
-	container: { flex: 1, justifyContent: "space-between", paddingHorizontal: spacingX._20 },
-	header: { marginBottom: spacingY._20 },
-	content: { gap: spacingY._30, marginTop: spacingY._15 },
-	inputContainer: { gap: spacingY._10 },
+const styles = StyleSheet.create({
+	container: { flex: 1, paddingHorizontal: spacingY._20 },
+	header: { marginBottom: spacingY._10 },
 	footer: {
 		alignItems: "center",
-		justifyContent: "center",
 		flexDirection: "row",
-		paddingHorizontal: spacingX._20,
-		gap: verticalScale(20),
-		paddingTop: spacingY._20,
+		paddingVertical: spacingY._5,
+		paddingHorizontal: spacingX._10,
+		gap: spacingX._10,
+		justifyContent: "flex-end",
 		borderTopWidth: 1,
-		borderTopColor: colors.neutral700,
-		marginBottom: spacingY._5,
+		marginTop: spacingY._10,
 	},
+	form: { gap: spacingY._20, marginTop: spacingY._5 },
+	inputContainer: { gap: spacingY._10 },
+	dateInput: {
+		paddingVertical: spacingY._7,
+		paddingHorizontal: spacingX._15,
+		borderRadius: radius._10,
+		justifyContent: "center",
+		alignItems: "flex-start",
+		marginBottom: spacingY._10,
+		height: verticalScale(54),
+		borderWidth: 1,
+		borderCurve: "continuous",
+	},
+	androidDatePicker: { marginTop: spacingY._5, borderRadius: radius._15, padding: spacingY._10 },
+	flexRow: { flexDirection: "row", alignItems: "center", gap: spacingX._5 },
 });
 
 export default Transaction;
