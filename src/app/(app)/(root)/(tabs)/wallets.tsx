@@ -20,14 +20,14 @@ const Wallets = () => {
 	return (
 		<ScreenWrapper style={{ backgroundColor: colors.black }}>
 			<View style={styles.container}>
-				{/* Ballance View */}
-				<View style={styles.ballanceView}>
+				{/* Balance View */}
+				<View style={styles.balanceView}>
 					<View style={{ alignItems: "center" }}>
 						<Typo size={45} fontWeight="500">
 							{`$${Number(2390).toFixed(2)}`}
 						</Typo>
 						<Typo size={16} color={colors.neutral300}>
-							Total Ballance
+							Total Balance
 						</Typo>
 					</View>
 				</View>
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
 		flex: 1,
 		justifyContent: "space-between",
 	},
-	ballanceView: {
+	balanceView: {
 		height: verticalScale(160),
 		backgroundColor: colors.black,
 		justifyContent: "center",

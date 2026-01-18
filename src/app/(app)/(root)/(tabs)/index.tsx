@@ -35,7 +35,7 @@ const Index = () => (
 			<ScrollView
 				contentContainerStyle={styles.scrollViewContainer}
 				showsVerticalScrollIndicator={false}>
-				{/* Ballance Card */}
+				{/* Balance Card */}
 				<HomeCard />
 
 				{/* Transaction List */}

@@ -11,10 +11,10 @@ const HomeCard = () => (
 		resizeMode="stretch"
 		style={styles.bgImage}>
 		<View style={styles.container}>
-			{/* Total Ballance */}
-			<View style={styles.totalBallanceRow}>
+			{/* Total Balance */}
+			<View style={styles.totalBalanceRow}>
 				<Typo color={colors.neutral800} size={17} fontWeight={"800"}>
-					Total Ballance
+					Total Balance
 				</Typo>
 				<TouchableOpacity>
 					<Icons.DotsThreeOutline
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
 		width: "100%",
 		justifyContent: "space-between",
 	},
-	totalBallanceRow: {
+	totalBalanceRow: {
 		flexDirection: "row",
 		alignItems: "center",
 		justifyContent: "space-between",
